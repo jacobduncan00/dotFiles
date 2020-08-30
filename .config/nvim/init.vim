@@ -1,5 +1,7 @@
 let mapleader = ","
 syntax on 
+filetype indent on
+filetype plugin on
 set guicursor=
 set relativenumber
 set nohlsearch
@@ -20,40 +22,14 @@ set incsearch
 set termguicolors
 set scrolloff=8
 set noshowmode
-set cmdheight=2
+set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
-
-
-filetype indent on
-filetype plugin on
-set noshowmode
 set ttyfast
-set shiftwidth=2
-set updatetime=300
-set shortmess+=c
 set clipboard+=unnamedplus
-set laststatus=0
-set ignorecase
-set incsearch
-set tabstop=2
-set textwidth=80
-set cmdheight=1
-set autoindent
-set smartindent
-set softtabstop=2
-set expandtab
-set nowrap
 set scrolloff=5
-set matchtime=2
-set lazyredraw
-set timeoutlen=750
-set mouse=a
-set noerrorbells
-syntax on
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin(stdpath('data').'/plugged')
 

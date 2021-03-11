@@ -6,8 +6,7 @@ o.termguicolors = true
 o.syntax = 'on'
 o.errorbells = false
 o.smartcase = true
-o.showmode = false
-bo.swapfile = false
+o.showmode = false bo.swapfile = false
 o.backup = false
 o.undodir = vim.fn.stdpath('config') .. '/undodir'
 o.undofile = true
@@ -21,12 +20,10 @@ o.softtabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
 wo.number = true
-wo.relativenumber = true
+wo.relativenumber = false
 wo.wrap = false
 
-
 vim.g.mapleader = ','
-
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -46,10 +43,24 @@ packer.init({
 
 packer.startup(function()
   local use = use
+
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
+
+  use {
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  use 'ntk148v/vim-horizon'
+  use 'tjdevries/colorbuddy.vim'
+  use 'tjdevries/gruvbuddy.nvim'
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
-  use 'tjdevries/colorbuddy.nvim'
   use 'bkegley/gloombuddy'
+
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
@@ -57,18 +68,19 @@ packer.startup(function()
   use 'tjdevries/express_line.nvim'
   use 'preservim/nerdtree'
   use 'nvim-lua/popup.nvim'
+  use 'romgrk/doom-one.vim'
   use 'nvim-lua/telescope.nvim'
   use 'Th3Whit3Wolf/one-nvim'
-  use 'PHSix/nvim-hybrid'
-  use 'bluz71/vim-nightfly-guicolors'
   use 'onsails/lspkind-nvim'
   use 'ryanoasis/vim-devicons'
-  use 'tjdevries/cyclist.vim'
+  use {'challenger-deep-theme/vim', as = 'challenger-deep'}
+  -- use 'tjdevries/cyclist.vim'
   use 'tpope/vim-commentary'
   end
 )
 
-vim.g.colors_name="nightfly"
+require('colorbuddy').colorscheme('gruvbuddy')
+-- vim.g.colors_name="doom-one"
 
 local configs = require'nvim-treesitter.configs'
 configs.setup {
@@ -104,5 +116,6 @@ local default_config = {
 lspconfig.tsserver.setup(default_config)
 lspconfig.pyright.setup(default_config)
 lspconfig.intelephense.setup(default_config)
+lspconfig.gopls.setup(default_config)
 require('el').setup {}
 require'jacob'

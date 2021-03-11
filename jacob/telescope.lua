@@ -118,4 +118,20 @@ M.quickfix = function()
   builtin.quickfix()
 end
 
+M.edit_neovim = function()
+  require('telescope.builtin').find_files {
+    prompt_title = "~ dotfiles ~",
+    shorten_path = false,
+    cwd = "~/.config/nvim",
+  }
+end
+
+M.edit_src = function()
+  require('telescope.builtin').find_files {
+    prompt_title = "~ src ~",
+    shorten_path = false,
+    cwd = "~/src",
+  }
+end
+
 return M
